@@ -4,7 +4,7 @@
   "description": "A prompt service for the Doop framework",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MomsFriendlyDevCo/doop-service-prompt.git"
+    "url": "git+https://github.com/MomsFriendlyDevCo/doop-prompt.git"
   },
   "keywords": [
     "doop"
@@ -12,10 +12,7 @@
   "author": "Matt Carter <m@ttcarter.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MomsFriendlyDevCo/doop-service-prompt/issues"
+    "url": "https://github.com/MomsFriendlyDevCo/doop-prompt/issues"
   },
-  "homepage": "https://github.com/MomsFriendlyDevCo/doop-service-prompt#readme",
-  "workspaces": [
-    "../*"
-  ]
+  "homepage": "https://github.com/MomsFriendlyDevCo/doop-prompt#readme"
 }
