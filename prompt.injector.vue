@@ -13,21 +13,21 @@ app.component('promptInjector', {
 			this.settings = settings;
 			this.isShowing = true;
 			this.$prompt.modal({
-				element: '#modal-_prompt',
+				element: `#modal-prompt-${this._uid}`,
 				...this.$prompt.settings,
 			});
 		},
 		closeModal() {
 			this.isShowing = false;
-			$('#modal-_prompt').modal('hide');
+			$(`#modal-prompt-${this._uid}`).modal('hide');
 		},
 	},
 });
 </script>
 
 <template>
-	<div>
-		<div id="modal-_prompt" class="modal">
+	<div class="modal-prompt-injector">
+		<div :id="`modal-prompt-${_uid}`" class="modal">
 			<div v-if="isShowing" class="modal-dialog" :class="settings.modalClass">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -74,26 +74,28 @@ app.component('promptInjector', {
 	</div>
 </template>
 
-<style>
-/* Adds a scale effect to modals */
-.modal > .modal-dialog {
-	transform: scale(0.7);
-	opacity: 0;
-	transition: all .3s;
-}
+<style lang="scss">
+.modal-prompt-injector {
+	/* Adds a scale effect to modals */
+	.modal > .modal-dialog {
+		transform: scale(0.7);
+		opacity: 0;
+		transition: all .3s;
+	}
 
-.modal.show > .modal-dialog {
-	opacity: 1;
-	transform: scale(1);
-}
+	.modal.show > .modal-dialog {
+		opacity: 1;
+		transform: scale(1);
+	}
 
-/* Add a fade out effect when the backdrop appears */
-.modal-backdrop {
-	opacity: 0 !important;
-	transition: all 5s;
-}
+	/* Add a fade out effect when the backdrop appears */
+	.modal-backdrop {
+		opacity: 0 !important;
+		transition: all .5s;
+	}
 
-.modal-backdrop.show {
-	opacity: 0.333 !important;
+	.modal-backdrop.show {
+		opacity: 0.333 !important;
+	}
 }
 </style>
