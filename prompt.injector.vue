@@ -75,6 +75,7 @@ app.component('promptInjector', {
 </template>
 
 <style lang="scss">
+// FIXME: Project level styles to apply on modals broadly? Move to theme/bootstrap-extensions?
 .modal-prompt-injector {
 	/* Adds a scale effect to modals */
 	.modal > .modal-dialog {
