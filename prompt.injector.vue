@@ -73,30 +73,3 @@ app.component('promptInjector', {
 		</div>
 	</div>
 </template>
-
-<style lang="scss">
-// FIXME: Project level styles to apply on modals broadly? Move to theme/bootstrap-extensions?
-.modal-prompt-injector {
-	/* Adds a scale effect to modals */
-	.modal > .modal-dialog {
-		transform: scale(0.7);
-		opacity: 0;
-		transition: all .3s;
-	}
-
-	.modal.show > .modal-dialog {
-		opacity: 1;
-		transform: scale(1);
-	}
-
-	/* Add a fade out effect when the backdrop appears */
-	.modal-backdrop {
-		opacity: 0 !important;
-		transition: all .5s;
-	}
-
-	.modal-backdrop.show {
-		opacity: 0.333 !important;
-	}
-}
-</style>
