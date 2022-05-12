@@ -7,6 +7,21 @@ app.component({
 				.then(res => console.log(`$prompt.${method}`, {status: 'resolve', payload: res}))
 				.catch(res => console.log(`$prompt.${method}`, {status: 'reject', payload: res}))
 		},
+
+		testReplace() {
+			this.$prompt.dialog({
+				replace: true,
+				isHtml: true,
+				body: ``
+					+ `<div class="modal-dialog">`
+						+ `<div class="modal-content">`
+							+ `<div class="modal-header">Custom header</div>`
+							+ `<div class="modal-body">Custom body</div>`
+							+ `<div class="modal-footer">Custom footer</div>`
+						+ `</div>`
+					+ `</div>`
+			})
+		},
 	},
 });
 </script>
@@ -35,6 +50,7 @@ app.component({
 				<a class="list-group-item" @click="testPrompt('list', {list: [{_id: 1, title: 'Foo'}, {_id: 2, title: 'Bar'}, {_id: 3, title: 'Baz'}]})">vm.$prompt.list({list: [...]})</a>
 				<a class="list-group-item" @click="testPrompt('list', {url: '/api/users', field: 'name'})">vm.$prompt.list({url: '/api/users'})</a>
 				<a class="list-group-item" @click="testPrompt('macgyver', {macgyver: [{type: 'mgText', id: 'testText'}]})">vm.$prompt.macgyver({macgyver: [{type: 'mgText', id: 'testText'}]})</a>
+				<a class="list-group-item" @click="testReplace()">vm.$prompt.modal({replace: true, ...})</a>
 			</div>
 		</div>
 	</div>

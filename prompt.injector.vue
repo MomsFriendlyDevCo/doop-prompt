@@ -28,7 +28,14 @@ app.component('promptInjector', {
 <template>
 	<div class="modal-prompt-injector">
 		<div :id="`modal-prompt-${_uid}`" class="modal">
-			<div v-if="isShowing" class="modal-dialog" :class="settings.modalClass">
+			<dynamic-component
+				v-if="isShowing && settings.replace && settings.component"
+				:component="settings.component"
+				:props="settings.componentProps"
+				:events="settings.componentEvents"
+			/>
+			<div v-else-if="isShowing && settings.replace && settings.isHtml" v-html="settings.body"/>
+			<div v-else-if="isShowing" class="modal-dialog" :class="settings.modalClass">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title" v-html="settings.title"/>

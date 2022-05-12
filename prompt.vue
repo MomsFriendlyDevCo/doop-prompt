@@ -23,6 +23,7 @@ app.service('$prompt', function() {
 	* @param {function} [settings.onShown] Optional callback to fire when the modal animation finishes and the modal is fully shown. Called as (settings)
 	* @param {function} [settings.onHide] Optional callback to fire when the modal hide animation starts. Called as (settings)
 	* @param {function} [settings.onHidden] Optional callback to fire when the modal hide animation finishes and the modal is fully hidden. Called as (settings)
+	* @param {boolean} [settings.replace=false] Replace the entire inner modal structure with a component only - this implies everything above .modal is handled by the component or HTML content
 	* @param {boolean} [settings.keyboard=false] React to the escape key to close the modal
 	* @param {boolean} [settings.backdrop=true] Show a backdrop when displaying the modal
 	* @param {Object} [settings.defer] The defer object to track against, if omitted one is created automatically
@@ -43,7 +44,7 @@ app.service('$prompt', function() {
 		if (!_.isPlainObject(options)) options = {element: options};
 
 		var settings = {
-			status: 'showing',
+			replace: false,
 			onShow: ()=> {},
 			onShown: ()=> {},
 			onHide: ()=> {},
