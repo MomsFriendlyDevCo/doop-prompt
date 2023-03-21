@@ -6,6 +6,7 @@ app.component('promptInjector', {
 	}),
 	computed: {
 		// FIXME: Do these apply if they are unavailable during initialisation? (Only exists after "openModal")
+		// TODO: Perhaps a pattern where "getInstance" is used to configure?
 		bsConfig() {
 			return JSON.stringify(_.pick(this.settings, ['backdrop', 'focus', 'keyboard']));
 		},
