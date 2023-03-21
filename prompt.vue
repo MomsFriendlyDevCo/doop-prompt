@@ -112,11 +112,7 @@ app.service('$prompt', function() {
 					settings.defer.notify(settings);
 					settings.defer.resolve();
 				})
-				.modal({
-					keyboard: settings.keyboard,
-					show: true,
-					backdrop: settings.backdrop,
-				})
+				.show();
 		});
 
 		return settings.defer.promise;

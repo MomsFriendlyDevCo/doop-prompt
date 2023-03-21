@@ -4,6 +4,12 @@ app.component('promptInjector', {
 		isShowing: false,
 		settings: undefined,
 	}),
+	computed: {
+		// FIXME: Do these apply if they are unavailable during initialisation? (Only exists after "openModal")
+		bsConfig() {
+			return JSON.stringify(_.pick(this.settings, ['backdrop', 'focus', 'keyboard']));
+		},
+	},
 	created() {
 		this.$on('$prompt.open', this.openModal);
 		this.$on('$prompt.close', this.closeModal);
@@ -19,7 +25,7 @@ app.component('promptInjector', {
 		},
 		closeModal() {
 			this.isShowing = false;
-			$(`#modal-prompt-${this._uid}`).modal('hide');
+			$(`#modal-prompt-${this._uid}`).hide();
 		},
 	},
 });
@@ -27,7 +33,11 @@ app.component('promptInjector', {
 
 <template>
 	<div class="modal-prompt-injector">
-		<div :id="`modal-prompt-${_uid}`" class="modal">
+		<div
+			:id="`modal-prompt-${_uid}`"
+			:data-bs-config="bsConfig"
+			class="modal"
+			tabindex="-1">
 			<dynamic-component
 				v-if="isShowing && settings.replace && settings.component"
 				:component="settings.component"
